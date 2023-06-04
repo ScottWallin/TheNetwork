@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <div class="mx-5">Network</div>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -11,26 +11,39 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            
-          </router-link>
-        </li>
       </ul>
+      <form @submit.prevent="doSearch()" class="me-5">
+      <input type="text" name="query" placeholder="Search">
+      <button class="btn btn-info"><i class="mdi mdi-eye"></i></button>
+    </form>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
   </nav>
 </template>
 
-<script>
+<script setup>
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { AppState } from "../AppState.js";
 import Login from './Login.vue';
-export default {
-  setup() {
-    return {}
-  },
-  components: { Login }
+let router = useRouter()
+
+function doSearch() {
+  let query = window.event.target.query.value
+  router.push({ name: 'Search', query: {query: query }})
 }
+onMounted(()=> {
+  router = useRouter()
+})
+// export default {
+//   setup() {
+//     return {
+//     }
+//   }
+//   };
+
+  // components: { Login }
 </script>
 
 <style scoped>

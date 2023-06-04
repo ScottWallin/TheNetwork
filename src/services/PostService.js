@@ -20,5 +20,28 @@ class PostService {
     AppState.olderPageUrl = res.data.older
     AppState.newerPageUrl = res.data.newer
   }
+  async getPostsByCreatorId(creatorId) {
+    const res = await api.get(`api/profiles/${creatorId}/posts?page` + AppState.page)
+    AppState.posts = res.data.posts.map(p => new Post(p))
+  }
+  async likePost(id) {
+    const res = await api.post(`api/posts/${id}/like`)
+    AppState.posts.filter(p => p.id == p.id)
+    logger.log(res.data)
+  }
+  async createPost(postData) {
+    const res = await api.post('api/posts', postData)
+    AppState.posts.unshift(new Post(res.data))
+  }
+  async removePost(id) {
+    const res = await api.delete('api/posts/' + id)
+    logger.log('[removePost]', res.data)
+  }
+  async searchPosts(query) {
+    const res = await api.get("api/posts", { params: { query: query } })
+    AppState.posts = res.data.posts.map(p => new Post(p))
+    logger.log(AppState.posts)
+  }
+
 }
 export const postService = new PostService()
