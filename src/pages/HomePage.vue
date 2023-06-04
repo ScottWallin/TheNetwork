@@ -1,15 +1,10 @@
 <template>
-  <!-- <div class="container-fluid">
-    <PostForm v-if="AppState.account.id" />
-    <section class="row justify-content-center">
-      <div v-for="p in AppState.posts" :key="p.id" class="col-md-7 col-12 p-3">
-      <PostCard :post="p"/>
-    </div>
-    </section>
-    <section class="row justify-content-center">
-    </section>
-    </div> -->
+  <div class="container-fluid">
+    <PostForm v-if="account" />
     <div class="row justify-content-center">
+      <!-- <button class="btn btn-light w-25 rounded mt-2 p-1">Create Post</button> -->
+      <div class="row justify-content-center">
+      </div>
       <div class="post-card col-8 my-2" v-for="p in posts" :key="p.id">
         <div class="align-items-center">
           <div class="col-md-8" >
@@ -17,11 +12,12 @@
           </div>
         </div>
       </div>
+        <div class="p-3">
+          <button :disabled="!olderUrl" @click="changePage(olderUrl)" class="btn btn-light">Older</button>
+          <button :disabled="!newerUrl" @click="changePage(newerUrl)" class="btn btn-light">Newer</button>
+      </div>
     </div>
-    <div class="p-3">
-      <button :disabled="!olderUrl" @click="changePage(olderUrl)" class="btn btn-light">Older</button>
-      <button :disabled="!newerUrl" @click="changePage(newerUrl)" class="btn btn-light">Newer</button>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -48,6 +44,7 @@ export default {
   })
     return {
       posts: computed(() => AppState.posts),
+      account: computed(() => AppState.account),
       olderUrl: computed (() => AppState.olderPageUrl),
       newerUrl: computed(() => AppState.newerPageUrl),
       async changePage(url) {

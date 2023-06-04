@@ -22,6 +22,7 @@ class PostService {
   }
   async getPostsByCreatorId(creatorId) {
     const res = await api.get(`api/profiles/${creatorId}/posts?page` + AppState.page)
+    logger.log('posts', res.data)
     AppState.posts = res.data.posts.map(p => new Post(p))
   }
   async likePost(id) {
@@ -36,6 +37,7 @@ class PostService {
   async removePost(id) {
     const res = await api.delete('api/posts/' + id)
     logger.log('[removePost]', res.data)
+    AppState.posts = AppState.posts.filter(p => p.id != AppState.posts.id)
   }
   async searchPosts(query) {
     const res = await api.get("api/posts", { params: { query: query } })

@@ -59,7 +59,9 @@ setup(props) {
     account: computed(() => AppState.account),
     async removePost() {
       try {
+        if (await Pop.confirm('lose the thing?'))
         await postService.removePost(props.postProp?.id)
+        Pop.toast('Post lost! Please refresh!', 'success')
       } catch (error) {
         logger.error(error)
         Pop.error(error)

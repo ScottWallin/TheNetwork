@@ -10,8 +10,8 @@
       <label for="imgUrl"></label>
       <input type="url" class="form-control" id="imgUrl" name="imgUrl" placeholder="Show us the goods">
     </div>
+    <button class="btn btn-info w-25 rounded mt-2 p-1">Create Post</button>
   </form>
-  <button class="btn btn-info w-25 rounded mt-2 p-1">Create Post</button>
     </div>
   </section>
 </template>
@@ -24,7 +24,8 @@ import {logger} from '../utils/Logger.js'
 
 export default {
 setup() {
-  async function createPost() {
+  return {
+  async createPost() {
     try {
       let form = event.target
       let rawPost = {
@@ -39,6 +40,7 @@ setup() {
       Pop.error(error)
     }
   }
+}
 }
 }
 </script>

@@ -13,6 +13,7 @@ export const AppState = reactive({
   newerPageUrl: null,
   profile: [],
   /** @type {import('./models/Profile.js').Profile}*/
+  activeProfile: null,
+  /** @type {import('./models/Account.js').Account}*/
   activeAccount: null,
-
 })
