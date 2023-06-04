@@ -5,6 +5,11 @@
         <div class="mx-5">Network</div>
       </div>
     </router-link>
+        <router-link class="navbar-brand d-flex" :to="{ name: 'Account' }">
+        <div class="d-flex flex-column align-items-center">
+          <div class="mx-5">Account</div>
+        </div>
+      </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

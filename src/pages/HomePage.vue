@@ -1,17 +1,27 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="post-card col-8 my-2" v-for="p in posts" :key="p.id">
-      <!-- <div class="align-items-center">
-        <div class="col-md-8" > -->
-          <PostCard :postProp="p" />
-          <!-- </div>
-          </div> -->
+  <!-- <div class="container-fluid">
+    <PostForm v-if="AppState.account.id" />
+    <section class="row justify-content-center">
+      <div v-for="p in AppState.posts" :key="p.id" class="col-md-7 col-12 p-3">
+      <PostCard :post="p"/>
+    </div>
+    </section>
+    <section class="row justify-content-center">
+    </section>
+    </div> -->
+    <div class="row justify-content-center">
+      <div class="post-card col-8 my-2" v-for="p in posts" :key="p.id">
+        <div class="align-items-center">
+          <div class="col-md-8" >
+            <PostCard :postProp="p" />
+          </div>
         </div>
       </div>
-      <div class="p-3">
-        <button :disabled="!olderUrl" @click="changePage(olderUrl)" class="btn btn-light">Older</button>
-        <button :disabled="!newerUrl" @click="changePage(newerUrl)" class="btn btn-light">Newer</button>
-      </div>
+    </div>
+    <div class="p-3">
+      <button :disabled="!olderUrl" @click="changePage(olderUrl)" class="btn btn-light">Older</button>
+      <button :disabled="!newerUrl" @click="changePage(newerUrl)" class="btn btn-light">Newer</button>
+    </div>
 </template>
 
 <script>
