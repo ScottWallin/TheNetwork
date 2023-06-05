@@ -29,13 +29,6 @@
         <PostCard :postProp="p" />
       </div>
     </section>
-    <!-- <section class="row justify-content-center">
-      <button class="col-2 btn btn-light" :disabled="!olderUrl" @click="changePage(olderUrl)">
-        Older</button>
-        <div class="col-2 text-center">{{ olderPageUrl }}</div>
-          <button :disabled="!newerUrl" @click="changePage(newerUrl)" class="btn btn-light">
-          Newer</button>
-    </section> -->
   </div>
 </template>
 

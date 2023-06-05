@@ -2,7 +2,6 @@
   <div class="container-fluid">
     <PostForm v-if="account" />
     <div class="row justify-content-center">
-      <!-- <button class="btn btn-light w-25 rounded mt-2 p-1">Create Post</button> -->
       <div class="row justify-content-center">
       </div>
       <div class="post-card col-8 my-2" v-for="p in posts" :key="p.id">
