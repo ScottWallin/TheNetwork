@@ -4,12 +4,12 @@
     :style="`background-image: url(${activeProfile.coverImg})`">
     <div class="col-md-12 d-flex align-items-center">
       <img :src="activeProfile.picture" alt="" class="img-fluid profile-img rounded-circle">
-      <div class="bg-transparent rounded p-3 ms-3">
+      <div class="bg-transparent card rounded p-3 ms-3">
       <h1>{{ activeProfile.name }}</h1>
       <h3>{{ activeProfile.bio }}</h3>
       </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 card">
       <div class="row justify-content-around">
         <div class="col-md-5 text-end">
           <h5>{{ activeProfile.class }}</h5>
@@ -34,7 +34,7 @@
 
 <script>
 import { AppState } from "../AppState.js";
-import {computed, reactive, onMounted } from 'vue';
+import {computed, onMounted } from 'vue';
 import { useRoute } from "vue-router";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -105,5 +105,14 @@ export default {
   min-height: 50vh;
   background-size: cover;
   background-position: center;
+}
+.card{
+  background: rgba(0, 0, 0, 0.23);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.1px);
+-webkit-backdrop-filter: blur(6.1px);
+border: 1px solid rgba(0, 0, 0, 0.35);
+color: white;
 }
 </style>

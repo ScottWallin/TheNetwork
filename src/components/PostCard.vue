@@ -42,6 +42,7 @@ import { RouterLink } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import { computed, reactive, onMounted} from 'vue';
+import { api } from "../services/AxiosService.js";
 
 export default {
   // props: {
@@ -75,6 +76,18 @@ setup(props) {
         Pop.error(error)
       }
     },
+        async searchMovies(searchTerm) {
+        // NOTE for AXIOS, we format queries as objects so they read as key:value pairs
+        const res = await api.get('search/post', {
+          params: {
+            query: searchTerm,
+          }
+        })
+        logger.log('[SEARCHING POSTS]', res.data)
+
+        AppState.query = searchTerm //NOTE save the searchterm to the appstate so that we can reuse this in our changepage method
+        AppState.posts = res.data.results.map(m => new Post(m))
+      },
     ComputeFullDate(date){
       return new Date(date).toLocaleDateString("en-us", {weekday: "long", year: "numeric", month: "short", day: "numeric"});
     },

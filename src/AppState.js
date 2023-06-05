@@ -16,4 +16,5 @@ export const AppState = reactive({
   activeProfile: null,
   /** @type {import('./models/Account.js').Account}*/
   activeAccount: null,
+  query: null,
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <!-- <ProfileSearchResult v-for="p in profile" :profile="p" /> -->
-    <PostCard v-for="p in posts" :posts="p" />
+    <PostCard v-for="p in posts" :posts="p" :key="p.id" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import {profilesService} from '../services/ProfilesService.js'
 import ProfileSearchResult from "../components/ProfileSearchResult.vue";
 
 let route = useRoute()
-let query = route.query.query
+let query = route.query
 export default {
     setup() {
         // async function searchProfiles() {
